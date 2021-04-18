@@ -2,24 +2,24 @@ import numpy as np
 import ga
 
 # Task 1
-# equation_inputs = [4, -2, 7, 5, 11, 1]
-# num_weights = 6
-# cal_fitness = ga.cal_pop_fitness_task1
+equation_inputs = [4, -2, 7, 5, 11, 1]
+num_weights = 6
+cal_fitness = ga.cal_pop_fitness_task1
 
 # Task 2
-equation_inputs = [-4, 12, -3, 2, 8]
-num_weights = 5
-cal_fitness = ga.cal_pop_fitness_task2
+# equation_inputs = [-4, 12, -3, 2, 8]
+# num_weights = 5
+# cal_fitness = ga.cal_pop_fitness_task2
 
 
-sol_per_pop = 8
+sol_per_pop = 10
 
 pop_size = (sol_per_pop, num_weights)
-new_population = np.random.uniform(low=-4.0, high=4.0, size=pop_size)
+new_population = np.random.uniform(low=-20.0, high=20.0, size=pop_size)
 
 
-num_generations = 10000
-num_parents_mating = 4
+num_generations = 10
+num_parents_mating = 5
 
 
 for generation in range(num_generations):

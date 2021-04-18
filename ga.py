@@ -78,6 +78,6 @@ def mutation(offspring_crossover: np.ndarray) -> np.ndarray:
     # Мутация меняет один ген у каждого потомка
     for idx in range(offspring_crossover.shape[0]):
         # Прибавляем к нужному гену рандомную мутацию
-        gene = np.random.randint(offspring_crossover.shape[1])
-        offspring_crossover[idx, gene] += np.random.uniform(-3.0, 3.0, 1)
+        gene = np.random.randint(0, offspring_crossover.shape[1], 3)
+        offspring_crossover[idx, gene] += np.random.uniform(-10.0, 10.0, 1)
     return offspring_crossover
