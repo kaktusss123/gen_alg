@@ -1,4 +1,7 @@
 import numpy as np
+from string import ascii_lowercase
+
+alphabet = ascii_lowercase + " "
 
 
 def cal_pop_fitness_task1(equation_inputs: list, pop: np.ndarray) -> np.ndarray:
@@ -25,6 +28,20 @@ def cal_pop_fitness_task2(equation_inputs: list, pop: np.ndarray) -> np.ndarray:
     mult = pop * equation_inputs
     fitness = mult[0] - mult[1] + mult[2] * mult[3] + mult[4]
     return fitness
+
+
+def cal_pop_fitness_task3(equation_inputs: list, pop: np.ndarray) -> np.ndarray:
+    """
+    Считает fitness текущей популяции.
+    intelligent information systems
+
+    :param equation_inputs: Столбец X
+    :param pop: Столбец весов
+    :return: Значение параметра fitness
+    """
+    array = [alphabet.index(x) for x in "intelligent information systems"]
+    diff = np.sum(np.abs(pop - array), axis=1)
+    return -diff
 
 
 def select_mating_pool(
@@ -67,7 +84,22 @@ def crossover(parents: np.ndarray, offspring_size: tuple):
     return offspring
 
 
-def mutation(offspring_crossover: np.ndarray) -> np.ndarray:
+def mutation3(offspring_crossover: np.ndarray) -> np.ndarray:
+    """
+    Реализует функицю мутации.
+    Случайным образом меняет один ген в каждом потомке.
+
+    :param offspring_crossover: Массив потомков
+    :return: Массив потомков с мутацией
+    """
+    # Мутация меняет один ген у каждого потомка
+    for idx in range(offspring_crossover.shape[0]):
+        gene = np.random.randint(31)
+        offspring_crossover[idx, gene] = np.random.randint(27)
+    return offspring_crossover
+
+
+def mutation1(offspring_crossover: np.ndarray) -> np.ndarray:
     """
     Реализует функицю мутации.
     Случайным образом меняет один ген в каждом потомке.
